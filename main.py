@@ -1,5 +1,6 @@
 import pygame 
 from paddle import Paddle
+from ball import Ball
 
 
 class HitTheIsland:
@@ -15,9 +16,12 @@ class HitTheIsland:
 
         # Variables 
         self.WHITE = (255, 255, 255)
-        self.paddle_rect = pygame.Rect(112, 500, 100, 28)
+        self.paddle_rect = pygame.Rect(112, 500, 128, 28)
+        self.ball_rect = pygame.Rect(168, 200, 10, 15)
+        self.ball_speed = {"x": 7, "y": 6}
         self.clock = pygame.time.Clock()
         self.FPS = 60
+
         
         # Loop
         self.running = True
@@ -31,8 +35,16 @@ class HitTheIsland:
 
     def draw(self):
         self.screen.fill(self.WHITE)
+
+        # Paddle 
         Paddle(self.screen, self.paddle_rect)
-        Paddle.key_input(self.paddle_rect, 15)
+        Paddle.key_input(self.paddle_rect, 10)
+
+        # Ball
+        Ball(self.screen, self.ball_rect)
+        Ball.ball_collision(self)
+
+
         pygame.display.update()
                     
 

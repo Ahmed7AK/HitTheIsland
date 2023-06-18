@@ -10,8 +10,6 @@ class Paddle:
 
     def draw(self):
         pygame.draw.rect(self.screen, (0, 0, 0), self.rect)
-        pygame.draw.circle(self.screen, (0, 0, 0), (self.rect.x, self.rect.y + self.rect.h / 2), 14)
-        pygame.draw.circle(self.screen, (0, 0, 0), (self.rect.x + self.rect.w, self.rect.y + self.rect.h / 2), 14)
 
     def key_input(paddle_rect, speed):
         key_press = pygame.key.get_pressed()
@@ -24,7 +22,10 @@ class Paddle:
         if key_press[pygame.K_RIGHT]:
             paddle_rect.x += speed 
 
-        if paddle_rect.x < 12.5:
-            paddle_rect.x = 12.5
-        if paddle_rect.x > 225:
-            paddle_rect.x = 225              
+        if paddle_rect.x < 0:
+            paddle_rect.x = 0
+        if paddle_rect.x > 209:
+            paddle_rect.x = 209       
+
+
+

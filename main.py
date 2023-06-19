@@ -1,6 +1,7 @@
 import pygame 
 from paddle import Paddle
 from ball import Ball
+from island import Island
 
 
 class HitTheIsland:
@@ -17,10 +18,12 @@ class HitTheIsland:
         # Variables 
         self.WHITE = (255, 255, 255)
         self.paddle_rect = pygame.Rect(112, 500, 128, 28)
+        self.island_rect = pygame.Rect(118, 5, 100, 28)
         self.ball_rect = pygame.Rect(168, 200, 10, 15)
         self.ball_speed = {"x": 7, "y": 6}
         self.clock = pygame.time.Clock()
         self.FPS = 60
+        self.go = 0
 
         
         # Loop
@@ -43,6 +46,9 @@ class HitTheIsland:
         # Ball
         Ball(self.screen, self.ball_rect)
         Ball.ball_collision(self)
+
+        # Island
+        Island(self.screen, self.island_rect)
 
 
         pygame.display.update()
